@@ -4,10 +4,10 @@ then
 	if [ ! -z $2 ]
 	then
 		#DATE=`date +"%D %T"`
-		#echo "$DATE $1" >> /home/casey/Documents/bash\ scripts/myevents
+		#echo "$DATE $1" >> ./myevents
 		DateCompare=`date -d "$2" +"%s"`
-		#DateInFileN=`cat /home/casey/Documents/bash\ scripts/myevents`
-		DateInFile=`awk '{print}' /home/casey/Documents/bash\ scripts/myevents`
+		#DateInFileN=`cat ./myevents`
+		DateInFile=`awk '{print}' ./myevents`
 		#echo "$DateInFileN"
 		#DateInFileConvert=$(date -d $DateInFile +%s)
 		#echo "$DateInFile"
@@ -22,20 +22,20 @@ then
 			else
 				:
 			fi
-		done < /home/casey/Documents/bash\ scripts/myevents
+		done < ./myevents
 		
 		#echo "$DateInFile" #mm dd yy
 		#echo "$DateCompare" #yy mm dd
 		#if [[ "$DateInFile" > "$DateCompare" ]]
 		#then
-			#awk '{ if("$DateInFile" > "$DateCompare") print;}' /home/casey/Documents/bash\ scripts/myevents
+			#awk '{ if("$DateInFile" > "$DateCompare") print;}' ./myevents
 		#else
 		#	:
 		#fi
 	else
 		DATE=`date +"%D %T"`
-		echo "$DATE $1" >> /home/casey/Documents/bash\ scripts/myevents
-		cat /home/casey/Documents/bash\ scripts/myevents
+		echo "$DATE $1" >> ./myevents
+		cat ./myevents
 	fi
 	
 #output without arguments
@@ -43,9 +43,9 @@ else
 	FILE=./myevents.conf
 	if [ -f "$FILE" ] 
 	then
-		n=`cat /home/casey/Documents/bash\ scripts/myevents.conf`
-		sed -n "1,${n}p" /home/casey/Documents/bash\ scripts/myevents
+		n=`cat ./myevents.conf`
+		sed -n "1,${n}p" ./myevents
 	else
-		sed -n "1,7p" /home/casey/Documents/bash\ scripts/myevents
+		sed -n "1,7p" ./myevents
 	fi
 fi
