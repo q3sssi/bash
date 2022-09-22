@@ -1,20 +1,7 @@
 #!/usr/bin/bash
 if [ ! -z $1 ]
 then
-	d=`find ./ -type f -name "*.$1" | xargs ls -l | awk '{print $6" "$7" "$9}'`
-	#echo "$d"
-	while read -r line;
-	do
-		k=`echo "$line" | awk '{print $1 $2}'`
-		echo "k"
-		#DateInFileConvert=`date -d "$k" +%s`
-		#if [[ $d > $2 ]]
-		#then
-		#	echo "$line"
-		#else
-		#	:
-		#fi
-	done < "$d"
+	echo "$(find ./ -type f -ls -name "*.$1" | grep "$2" | awk '{print $8" "$9" "$11}')"
 else
 	echo "File extension incorrect"
 fi
