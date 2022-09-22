@@ -19,7 +19,7 @@ then
 				fi
 			done < ./myevents)
 			n=`cat ./myevents.conf`
-			echo "$k" | tail -"${n}"
+			echo "$k" | head -"${n}"
 			
 		else
 			:
