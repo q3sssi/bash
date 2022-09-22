@@ -7,7 +7,7 @@ then
 		then
 			DateCompare=`date -d "$2" +"%s"`
 			DateInFile=`awk '{print}' ./myevents`
-			while read -r line;
+			k=$(while read -r line;
 			do
 				k=`echo "$line" | awk '{print $1}'`
 				DateInFileConvert=`date -d "$k" +%s`
@@ -17,7 +17,9 @@ then
 				else
 					:
 				fi
-			done < ./myevents
+			done < ./myevents)
+			n=`cat ./myevents.conf`
+			echo "$k" | tail -"${n}"
 			
 		else
 			:
