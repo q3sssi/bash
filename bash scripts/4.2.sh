@@ -1,3 +1,14 @@
 #!/usr/bin/bash
-cat "/etc/passwd" | grep "home" | awk -F':' '{print $1}'
-cat "/etc/group"
+
+s=`cat "/etc/group"`
+
+for i in $s
+do
+	s1=`echo "$i" | awk -F, '{print $2}'`
+	if [ ! -z $s1 ]
+	then
+		echo "$i" | grep -w "$1"
+	else
+		continue
+	fi
+done
