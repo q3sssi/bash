@@ -1,17 +1,18 @@
 #!/usr/bin/bash
-
-s=$(ls -l )
-for i in "$s"
-do
-	#s1=`echo $i | awk '{print $1}'`
-	#s2=`echo $i | awk '{print}'`
-	echo "$i"
-	echo "1"
-	#if [[ $s1 == $1 ]]
-	#then
-	#	echo "1"
-	#	#let $k+=$2
-	#else
-	#	continue
-	#fi
-done
+if [[ ! -z $2 ]]
+then
+	cd $2 2>/dev/null
+else 
+	cd ./
+fi
+file=`ls -lARG | egrep -v ^d | awk -F ' ' '{print $3" "$4}' | grep -w "$1" | awk '{print $2}'`
+if [[ ! -z $file ]]
+then
+	for i in $file
+	do
+		let ik+=$i
+	done
+	echo "Disk usage for user \"$1\" = $ik"
+else
+	echo "Incorrect username"
+fi
