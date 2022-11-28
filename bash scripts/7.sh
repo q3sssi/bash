@@ -1,6 +1,6 @@
 #!usr/bin/bash
 while :
 do
-netstat -s | grep segments >> ./netstatlog
+ss -s >> ./netstatlog
 sleep 600
 done
